@@ -1,0 +1,9 @@
+{
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "claude-code-optimization",
+  "showIndentGuide": true,
+  "strictLineBreaks": false,
+  "readableLineLength": true,
+  "defaultViewMode": "source"
+}

@@ -2,6 +2,7 @@
 
 ## Key references
 
+- **Usage & limits (official)**: https://support.claude.com/en/articles/14552983-models-usage-and-limits-in-claude-code
 - **Best practices repo**: https://github.com/shanraisshan/claude-code-best-practice (43k+ stars)
 - **Claude Code repo**: https://github.com/anthropics/claude-code (113k+ stars)
 - **Blueprint**: https://github.com/faizkhairi/claude-code-blueprint
@@ -14,6 +15,7 @@
 |------|---------|
 | `README.md` | This index + quick reference |
 | `token-saving.md` | Token cost model, 10 techniques, common mistakes |
+| `usage-metering.md` | Web vs Code usage, why % ≠ token math, 44K myth, /cost |
 | `commands-shortcuts.md` | All commands, keyboard shortcuts, slash commands |
 | `claudemd-guide.md` | How to write an effective CLAUDE.md (rules, structure, limits) |
 | `skills-subagents.md` | Skills, subagents, hooks, commands, rules — configuration guide |

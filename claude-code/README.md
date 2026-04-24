@@ -1,66 +1,52 @@
 # Claude Code — Optimization Kit
 
-Everything Claude Code needs to work faster, cheaper, and more accurately. This folder contains **37 instruction files** organized so Claude reads **only what it needs** per task.
+Curated **`instructions/`** so Claude Code reads **one targeted file per task** (lower tokens, fewer mistakes). The folder is also a small **Obsidian vault** for humans (`_MOC.md`, `.obsidian/`).
 
 ---
 
-## What's Inside
+## What's inside
 
-| Folder | Purpose | Files | When Claude reads it |
-|--------|---------|-------|---------------------|
-| [`instructions/`](instructions/) | All instruction files + scenario router | 37 | Every session (router only) |
+| Path | Role |
+|------|------|
+| [`instructions/`](instructions/) | **Router** (`router.md`), topic guides, MCP sample, **Obsidian** hub |
 
-### Instruction subfolders
+### Topic folders
 
-| Subfolder | What it covers | Files | Read when... |
-|-----------|---------------|-------|-------------|
-| [`context7/`](instructions/context7/) | Live library docs via MCP — no hallucinated APIs | 3 | Coding with any library (boto3, DuckDB, etc.) |
-| [`sequential-thinking/`](instructions/sequential-thinking/) | Structured reasoning via MCP — architecture, debugging | 3 | Planning, designing, debugging complex issues |
-| [`claude-code-optimization/`](instructions/claude-code-optimization/) | Token saving, workflows, CLAUDE.md guide | 8 | Optimizing Claude Code, writing config files |
-| [`claudectx/`](instructions/claudectx/) | Token audit CLI — analyze, optimize, watch | 4 | Auditing cost, setting up smart file reads |
-| [`anthropic-cookbook/`](instructions/anthropic-cookbook/) | Official API patterns — caching, JSON, SQL, tools | 6 | Calling Claude API, building integrations |
-| [`claude-sdks/`](instructions/claude-sdks/) | Official Anthropic SDKs (Python + TypeScript) | 4 | Building apps with Claude, choosing an SDK |
-| [`mcp-servers/`](instructions/mcp-servers/) | MCP ecosystem — config, tiers, server list | 1 | Installing or managing MCP servers |
+| Folder | Topics | Files |
+|--------|--------|-------|
+| [`context7/`](instructions/context7/) | Live library docs (MCP) | 3 |
+| [`sequential-thinking/`](instructions/sequential-thinking/) | Structured reasoning (MCP) | 3 |
+| [`claude-code-optimization/`](instructions/claude-code-optimization/) | Tokens, **usage metering**, workflows, `CLAUDE.md` | 9 |
+| [`claudectx/`](instructions/claudectx/) | Token audit CLI + MCP | 4 |
+| [`anthropic-cookbook/`](instructions/anthropic-cookbook/) | API patterns (cache, JSON, SQL, tools) | 6 |
+| [`claude-sdks/`](instructions/claude-sdks/) | Python / TS SDKs | 4 |
+| [`mcp-servers/`](instructions/mcp-servers/) | MCP ecosystem overview | 1 |
+
+**Root of `instructions/`:** `router.md`, `_MOC.md`, `OBSIDIAN.md`, `mcp-config-example.json`, `.gitignore`, `.obsidian/*` (3 JSON). **~38 files total.**
 
 ---
 
-## Quick Start
+## Quick start
 
-### 1. Copy to your project
+### 1. Copy into your repo
 
 ```bash
 cp -r claude-code/instructions/ /your/project/instructions/
 ```
 
-### 2. Add to your `CLAUDE.md`
+### 2. Point `CLAUDE.md` at the router
 
 ```markdown
-## Instructions (read ONLY what you need)
-
-- **Router**: `instructions/router.md` — lookup table for which file to read
-- **Rule**: Do NOT read all 37 files. Only the one matching your current task.
+## Instructions
+- **Router:** `instructions/router.md` — one file per task.
+- **Optional:** `instructions/_MOC.md` — wikilink map / Obsidian only; not every turn.
 ```
 
-### 3. Install MCP servers
+### 3. MCP (optional)
 
-Copy `instructions/mcp-config-example.json` into your `.cursor/mcp.json` or `.claude/settings.json`:
+Merge `instructions/mcp-config-example.json` into `.claude/settings.json` or `.cursor/mcp.json`.
 
-```json
-{
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    },
-    "sequential-thinking": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
-    }
-  }
-}
-```
-
-### 4. Audit token usage
+### 4. Audit usage (optional)
 
 ```bash
 npx claudectx analyze
@@ -68,40 +54,37 @@ npx claudectx analyze
 
 ---
 
-## How the Router Works
+## Obsidian
 
-`instructions/router.md` is a lookup table with three sections:
+1. **Open folder as vault** → select `claude-code/instructions/`.
+2. Open **`_MOC.md`** → **Local graph** to jump between linked notes.
+3. Details: **`OBSIDIAN.md`**.
 
-| Section | Covers |
-|---------|--------|
-| **Writing code** | Library docs, API patterns, SDK usage, JSON/SQL generation |
-| **Optimizing Claude Code** | Token saving, commands, workflows, auditing |
-| **Configuring MCP** | Install Context7, Sequential Thinking, claudectx MCP |
-
-Claude reads the router (~100 lines), finds its situation in the table, opens **1 file**. No browsing, no guessing.
+Claude Code: **always `router.md` first**; `_MOC.md` when exploring many linked notes.
 
 ---
 
-## Key Metrics
+## Router behavior
 
-| What | Before instructions | After instructions |
-|------|--------------------|--------------------|
-| Tokens per request | ~18K | ~3.7K (**79% less**) |
-| Cache hit rate | 12% | 74% (**6x**) |
-| Daily cost | $20–40 | $5–12 (**70% less**) |
-| Wrong-approach iterations | 3–5 per feature | 1–2 (**60% less**) |
+Three tables in **`router.md`**: coding, optimizing Claude Code, MCP setup. Match the row → open **one** linked file.
 
 ---
 
-## File Count
+## Metrics (typical)
 
-| Category | Files |
-|----------|-------|
-| MCP server guides | 7 (context7: 3, sequential-thinking: 3, mcp-servers: 1) |
-| Optimization guides | 12 (claude-code-optimization: 8, claudectx: 4) |
-| API/SDK guides | 10 (anthropic-cookbook: 6, claude-sdks: 4) |
-| Config files | 1 (mcp-config-example.json) |
-| Router | 1 (router.md) |
-| **Total** | **31 + 6 READMEs = 37** |
+| | Before | After guides + hygiene |
+|--|--------|-------------------------|
+| Tokens / request | ~18K | ~3.7K |
+| Cache hit rate | ~12% | ~74% |
 
-Each file is **self-contained** and **< 200 lines**.
+---
+
+## File roll-up
+
+| Bucket | Count |
+|--------|-------|
+| Markdown guides (all subfolders + router) | 32 |
+| Hub + config + Obsidian + ignore | 6 |
+| **Total** | **38** |
+
+Keep each guide **self-contained** and **under ~200 lines** where possible.

@@ -24,7 +24,7 @@ A structured collection of instructions, configurations, and optimization guides
 
 | Folder | AI Tool | Status | Files |
 |--------|---------|--------|-------|
-| [`claude-code/`](claude-code/) | Claude Code (Anthropic) | **37 files** — full coverage | Instructions, MCP configs, SDK guides, optimization |
+| [`claude-code/`](claude-code/) | Claude Code (Anthropic) | **38 files** in `instructions/` | Router, guides, MCP sample, **Obsidian hub** (`_MOC.md`, `.obsidian/`) |
 | [`ChatGPT/`](ChatGPT/) | ChatGPT / Codex (OpenAI) | Coming soon | Planned: custom instructions, API patterns, plugins |
 | [`Gemini/`](Gemini/) | Gemini Code Assist (Google) | Coming soon | Planned: context configs, extensions, API patterns |
 
@@ -40,8 +40,12 @@ IA-Instructions/
 │
 ├── claude-code/                       ← Claude Code optimization (active)
 │   ├── README.md                      ← Overview + quick start for Claude Code
-│   └── instructions/                  ← 37 self-contained instruction files
-│       ├── router.md                  ← Scenario router: which file to read when
+│   └── instructions/                  ← 38 files: guides + router + Obsidian vault
+│       ├── router.md                  ← Scenario router (start here for Claude Code)
+│       ├── _MOC.md                    ← Map of content + wikilinks (Obsidian graph hub)
+│       ├── OBSIDIAN.md                ← Open folder as vault, graph/backlinks tips
+│       ├── .obsidian/                 ← Minimal Obsidian settings (safe to commit)
+│       ├── .gitignore                 ← Ignores local Obsidian noise (workspace, plugins)
 │       ├── mcp-config-example.json    ← Copy-paste MCP server config
 │       │
 │       ├── context7/                  ← MCP: live library documentation
@@ -54,9 +58,10 @@ IA-Instructions/
 │       │   ├── tool-reference.md      ← Parameters, revision, branching
 │       │   └── prompt-patterns.md     ← 10 prompt examples + token economics
 │       │
-│       ├── claude-code-optimization/  ← Token saving, workflows, CLAUDE.md
+│       ├── claude-code-optimization/  ← Token saving, usage metering, workflows
 │       │   ├── README.md              ← Top 3 optimizations + cost model
 │       │   ├── token-saving.md        ← 10 techniques ranked by impact
+│       │   ├── usage-metering.md      ← Web vs Code usage, plan %, “44K” myth
 │       │   ├── commands-shortcuts.md  ← Every slash command + keyboard shortcut
 │       │   ├── claudemd-guide.md      ← How to write CLAUDE.md correctly
 │       │   ├── skills-subagents.md    ← Skills, subagents, hooks config
@@ -133,6 +138,13 @@ IA-Instructions/
 | 5 | `.claudeignore` | **20–40%** on indexing | `claude-code-optimization/claudeignore-template` |
 | 6 | Disconnect unused MCPs | **18K tokens/msg** per server | `mcp-servers/README.md` |
 | 7 | Structured `CLAUDE.md` | **10–20%** always | `claude-code-optimization/claudemd-guide.md` |
+| 8 | Plan % vs session tokens (confusion) | — | `claude-code-optimization/usage-metering.md` |
+
+---
+
+## Obsidian (optional)
+
+Open [`claude-code/instructions/`](claude-code/instructions/) as an **Obsidian vault** for graph view and `[[wikilinks]]`. Start at **`_MOC.md`**; read **`OBSIDIAN.md`** for setup. Claude Code should still use **`router.md` first**; `_MOC.md` is for humans or rare multi-note hops.
 
 ---
 
@@ -149,8 +161,9 @@ cp -r IA-Instructions/claude-code/instructions/ /your/project/
 
 # 3. Add to your CLAUDE.md
 echo '## Instructions
-- Read `instructions/router.md` to find the right file for your task
-- Do NOT read all files — only the one matching your current situation' >> CLAUDE.md
+- Router: `instructions/router.md` — pick ONE file per task
+- Optional link map: `instructions/_MOC.md` — not every turn (Obsidian hub)
+- Do NOT read every file in instructions/' >> CLAUDE.md
 
 # 4. Install recommended MCP servers
 # Copy config from claude-code/instructions/mcp-config-example.json
@@ -201,7 +214,7 @@ The router contains three tables: **writing code**, **optimizing the AI**, **con
 1. Fork the repo
 2. Pick a folder (`claude-code/`, `ChatGPT/`, or `Gemini/`)
 3. Add or improve instruction files (keep each < 200 lines)
-4. If adding to `claude-code/`, update `router.md` with the new scenario
+4. If adding to `claude-code/`, update `router.md` and `_MOC.md` with the new file
 5. PR with a description of what situation your file addresses
 
 ---

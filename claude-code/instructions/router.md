@@ -3,6 +3,9 @@
 > **STOP.** Do NOT read all files in this folder.
 > Find your situation in the tables below → read that ONE file.
 
+**Obsidian:** this folder = vault; hub [[_MOC]] · setup [[OBSIDIAN]].  
+**Claude:** start here → one table row → one file. `_MOC.md` only for full link map (not every turn).
+
 ---
 
 ## I'm writing code
@@ -25,6 +28,7 @@
 | Situation | Read this file |
 |-----------|---------------|
 | Session feels slow or expensive | [`claude-code-optimization/token-saving.md`](claude-code-optimization/token-saving.md) |
+| Web % vs session tokens, "44K" cap confusion | [`claude-code-optimization/usage-metering.md`](claude-code-optimization/usage-metering.md) |
 | Need a command or keyboard shortcut | [`claude-code-optimization/commands-shortcuts.md`](claude-code-optimization/commands-shortcuts.md) |
 | Writing or improving a CLAUDE.md file | [`claude-code-optimization/claudemd-guide.md`](claude-code-optimization/claudemd-guide.md) |
 | Setting up skills, subagents, or hooks | [`claude-code-optimization/skills-subagents.md`](claude-code-optimization/skills-subagents.md) |
@@ -53,7 +57,7 @@
 |--------|-------|---------|
 | `context7/` | 3 | Live library docs injection via MCP |
 | `sequential-thinking/` | 3 | Structured reasoning via MCP |
-| `claude-code-optimization/` | 8 | Token saving, workflows, config templates |
+| `claude-code-optimization/` | 9 | Token saving, usage metering, workflows, config templates |
 | `claudectx/` | 4 | Token audit CLI + MCP server |
 | `anthropic-cookbook/` | 6 | Official Claude API patterns |
 | `claude-sdks/` | 4 | Anthropic SDKs (Python + TypeScript) |
