@@ -25,7 +25,7 @@ A structured collection of instructions, configurations, and optimization guides
 | Folder | AI Tool | Status | Files |
 |--------|---------|--------|-------|
 | [`claude-code/`](claude-code/) | Claude Code (Anthropic) | **38 files** in `instructions/` | Router, guides, MCP sample, **Obsidian hub** (`_MOC.md`, `.obsidian/`) |
-| [`ChatGPT/`](ChatGPT/) | ChatGPT / Codex (OpenAI) | Coming soon | Planned: custom instructions, API patterns, plugins |
+| [`ChatGPT/`](ChatGPT/) | ChatGPT / Codex (OpenAI) | **Research prompt** ready | [`PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md`](ChatGPT/PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md) — paste into GPT-5.5+ |
 | [`Gemini/`](Gemini/) | Gemini Code Assist (Google) | Coming soon | Planned: context configs, extensions, API patterns |
 
 ---

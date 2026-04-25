@@ -2,6 +2,12 @@
 
 > **Status**: Planned — contributions welcome
 
+## Ready-to-run research prompt
+
+| File | Use |
+|------|-----|
+| [`PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md`](PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md) | **Copy-paste into ChatGPT (GPT-5.5+)** — deep research brief: Obsidian × Anthropic (Claude Code, Skills, Hooks, Subagents, MCP) × third-party tools, token economics, architectures, security, 90-day roadmap. |
+
 ## What this folder will contain
 
 Instruction files to optimize ChatGPT and OpenAI Codex for coding tasks, following the same pattern as [`claude-code/`](../claude-code/):
