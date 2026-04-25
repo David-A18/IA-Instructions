@@ -4,6 +4,8 @@
 
 A structured collection of instructions, configurations, and optimization guides for AI coding tools. Each AI assistant gets its own folder with curated, self-contained files that the AI reads **only when needed** — no wasted tokens on irrelevant context.
 
+**Architecture & refactoring plan:** [`analysis.md`](analysis.md) — full interpretation of the Obsidian × Claude Code decision brief, token/quota mechanics, hooks/skills/MCP policy, and a phased repo refactor.
+
 ---
 
 ## Why This Exists
@@ -36,6 +38,7 @@ A structured collection of instructions, configurations, and optimization guides
 IA-Instructions/
 │
 ├── README.md                          ← You are here
+├── analysis.md                        ← Decision brief interpretation + refactor plan
 ├── LICENSE                            ← GPL-3.0
 │
 ├── claude-code/                       ← Claude Code optimization (active)

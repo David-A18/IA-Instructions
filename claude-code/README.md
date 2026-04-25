@@ -2,6 +2,8 @@
 
 Curated **`instructions/`** so Claude Code reads **one targeted file per task** (lower tokens, fewer mistakes). The folder is also a small **Obsidian vault** for humans (`_MOC.md`, `.obsidian/`).
 
+**Strategy & repo roadmap:** see [`../analysis.md`](../analysis.md) (cockpit/executor split, hooks/skills, MCP policy, monorepo router naming).
+
 ---
 
 ## What's inside
