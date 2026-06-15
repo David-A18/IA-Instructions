@@ -18,7 +18,7 @@ Skills are on-demand knowledge modules. They load only when Claude detects relev
 
 ```
 .claude/skills/
-└── finops-analysis/
+└── analytics-review/
     ├── SKILL.md              ← core rules + index (< 500 lines)
     ├── references/
     │   ├── cur-schema.md     ← CUR column definitions
@@ -33,20 +33,20 @@ Skills are on-demand knowledge modules. They load only when Claude detects relev
 
 ```markdown
 ---
-name: finops-analysis
-description: "Analyze AWS cost data, detect anomalies, generate rightsizing recommendations"
+name: analytics-review
+description: "Analyze domain data, detect anomalies, and generate recommendations"
 allowed-tools: ["Read", "Edit", "Bash", "Glob"]
 model: sonnet
 ---
 
-# FinOps Analysis Skill
+# Analytics Review Skill
 
 ## When to use
 When asked about cost analysis, anomaly detection, or rightsizing.
 
 ## Rules
-1. Always query DuckDB via `finops/ingestion/local_store.py`
-2. Use YAML rules from `finops/config/rules/`
+1. Always query DuckDB via `src/ingestion/local_store.py`
+2. Use YAML rules from `config/rules/`
 3. Output reports in JSON and Markdown
 
 ## Gotchas

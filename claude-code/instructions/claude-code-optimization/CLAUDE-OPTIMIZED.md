@@ -20,7 +20,7 @@ Investigación de mercado 2026 + specs técnicas para proyectos AWS/Cloud/IA/Dev
 | `docs/OPPORTUNITIES.md` | 8 oportunidades rankeadas |
 | `docs/PROJECT-A.md` | GenAI Security Gateway + RAG Assistant |
 | `docs/PROJECT-B.md` | Platform Engineering Kit (EKS/Backstage/GitOps) |
-| `docs/PROJECT-C.md` | FinOps Autopilot (opcional) |
+| `docs/PROJECT-C.md` | Analytics automation project (optional) |
 | `docs/ARCHITECTURE.md` | Repo structure, CI/CD, IaC, K8s patterns |
 | `docs/SECURITY.md` | Seguridad, compliance, licencias OSS |
 | `docs/ROADMAP.md` | Roadmap 12 semanas |

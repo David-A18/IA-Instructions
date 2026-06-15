@@ -1,45 +1,39 @@
-# Gemini Code Assist — Optimization Kit
+# Gemini Instructions
 
-> **Status**: Planned — contributions welcome
+Gemini CLI and Gemini Code Assist should start at [instructions-router.md](instructions-router.md), then read only the linked task file that matches the request.
 
-## What this folder will contain
+## What Is Included
 
-Instruction files to optimize Google's Gemini Code Assist and Gemini API for coding tasks, following the same pattern as [`claude-code/`](../claude-code/):
+| Path | Purpose |
+| --- | --- |
+| [instructions-router.md](instructions-router.md) | Canonical first-read router for Gemini. |
+| [instructions/gemini-cli/](instructions/gemini-cli/) | `GEMINI.md`, CLI memory, and command guidance. |
+| [instructions/code-assist/](instructions/code-assist/) | Gemini Code Assist repository context and custom command guidance. |
+| [instructions/gemini-api/](instructions/gemini-api/) | Gemini API patterns for structured outputs and tool use. |
+| [instructions/context-management/](instructions/context-management/) | Context and repository indexing hygiene. |
+| [instructions/prompts/](instructions/prompts/) | Reusable Gemini task prompts. |
+| [instructions/templates/](instructions/templates/) | Copyable native instruction files. |
 
-- **Context configuration** — `.gemini/` config files, style guides, code customization
-- **API patterns** — Gemini API (generateContent, function calling, structured output, grounding)
-- **Extensions** — useful Gemini extensions for development
-- **Token optimization** — context management across Gemini's 2M token window
-- **Code Assist settings** — IDE-specific configs for VS Code, JetBrains, Cloud Shell
+## Install For Gemini CLI
 
-## Planned structure
+Copy the native instruction template into a target repo:
 
-```
-Gemini/
-├── README.md                  ← You are here
-├── instructions/
-│   ├── router.md              ← Scenario router (same pattern as Claude Code)
-│   ├── context-config/        ← .gemini/ files, style guides
-│   ├── api-patterns/          ← Gemini API: content generation, tools, grounding
-│   ├── code-assist/           ← IDE settings, code customization
-│   └── token-optimization/    ← Managing the 2M context window
+```bash
+cp Gemini/instructions/templates/GEMINI.md /your/project/GEMINI.md
 ```
 
-## Key differences from Claude Code
+Copy this folder into the target repo or keep it as a shared checkout:
 
-| Feature | Claude Code | Gemini Code Assist |
-|---------|------------|-------------------|
-| Config file | `CLAUDE.md` | `.gemini/styleguide.md` + `.gemini/settings.json` |
-| MCP support | Native | Via extensions |
-| Context window | 1M tokens | **2M tokens** (Gemini 3.1 Pro) |
-| CLI tool | Claude Code CLI | `gemini` CLI |
-| Pricing model | Per-token API | Per-token API (cheaper per MTok) |
-| Coding benchmark | 80.8% SWE-bench | 80.6% SWE-bench |
+```bash
+cp -r Gemini /your/project/instructions/ia-instructions/Gemini
+```
 
-## Contributing
+Update the `GEMINI.md` router path if needed.
 
-1. Fork the repo
-2. Add instruction files to `Gemini/instructions/`
-3. Follow the pattern: one file per scenario, < 200 lines, self-contained
-4. Update this README with actual content descriptions
-5. PR with the scenario your file addresses
+## Consistency Checklist
+
+- [instructions-router.md](instructions-router.md) exists and is the only canonical entrypoint.
+- Every task file used by the router exists.
+- Guidance focuses on `GEMINI.md`, CLI memory, repository context, and Code Assist customization.
+- Templates contain placeholders only.
+- No private planning, local state, or project-specific handoff notes are required.

@@ -14,7 +14,7 @@ Plan this with sequential thinking before implementing...
 ## Architecture & design prompts
 
 ```
-Use sequential thinking to design the anomaly detection engine for FinOps Autopilot.
+Use sequential thinking to design the anomaly detection engine for an analytics app.
 Consider: data flow from DuckDB, rule evaluation, alert generation, and PR creation.
 ```
 
@@ -45,7 +45,7 @@ Consider: CLAUDE.md size, dynamic content, conversation length, MCP tool schemas
 ## Planning prompts
 
 ```
-Use sequential thinking to plan Week 3 of FinOps Autopilot:
+Use sequential thinking to plan the next milestone of an analytics app:
 anomaly detection + top movers. I need: data model, algorithm choice,
 config schema, CLI commands, and test strategy.
 ```

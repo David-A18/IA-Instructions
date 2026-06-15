@@ -29,7 +29,7 @@ Do you need Claude to autonomously read/write files?
 | Requires Claude Code CLI | No | Yes |
 | Pricing | Pay per API call | Uses Claude Code subscription |
 
-## For our FinOps project
+## Example project decision
 
 | Phase | SDK | Why |
 |-------|-----|-----|

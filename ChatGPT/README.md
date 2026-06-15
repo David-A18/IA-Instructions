@@ -1,51 +1,39 @@
-# ChatGPT / Codex — Optimization Kit
+# ChatGPT / Codex Instructions
 
-> **Status**: Planned — contributions welcome
+ChatGPT and OpenAI Codex should start at [instructions-router.md](instructions-router.md), then read only the task-specific file that matches the request.
 
-## Ready-to-run research prompt
+## What Is Included
 
-| File | Use |
-|------|-----|
-| [`PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md`](PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md) | **Copy-paste into ChatGPT (GPT-5.5+)** — deep research brief: Obsidian × Anthropic (Claude Code, Skills, Hooks, Subagents, MCP) × third-party tools, token economics, architectures, security, 90-day roadmap. |
+| Path | Purpose |
+| --- | --- |
+| [instructions-router.md](instructions-router.md) | Canonical first-read router for ChatGPT and Codex. |
+| [instructions/codex/](instructions/codex/) | Codex workflow and operating rules. |
+| [instructions/agents-md/](instructions/agents-md/) | `AGENTS.md` guidance and templates. |
+| [instructions/openai-api/](instructions/openai-api/) | OpenAI API patterns for tools and structured outputs. |
+| [instructions/context-management/](instructions/context-management/) | Context, file-reading, and session hygiene. |
+| [instructions/prompts/](instructions/prompts/) | Reusable prompts for research and planning. |
+| [instructions/templates/](instructions/templates/) | Copyable native instruction files. |
 
-## What this folder will contain
+## Install For Codex
 
-Instruction files to optimize ChatGPT and OpenAI Codex for coding tasks, following the same pattern as [`claude-code/`](../claude-code/):
+Copy the native instruction template into a target repo:
 
-- **Custom instructions** — system prompts optimized for coding efficiency
-- **API patterns** — OpenAI API usage (chat completions, function calling, structured outputs)
-- **GPT configuration** — custom GPT setup for development workflows
-- **Token optimization** — context management, prompt compression, response control
-- **Codex CLI** — configuration and workflow patterns for OpenAI's Codex CLI tool
-- **Plugin/tool configs** — useful plugins and tool integrations
-
-## Planned structure
-
-```
-ChatGPT/
-├── README.md                  ← You are here
-├── instructions/
-│   ├── router.md              ← Scenario router (same pattern as Claude Code)
-│   ├── custom-instructions/   ← System prompts for coding
-│   ├── api-patterns/          ← OpenAI API: completions, tools, structured output
-│   ├── codex-cli/             ← Codex CLI optimization
-│   └── token-optimization/    ← Context management, prompt engineering
+```bash
+cp ChatGPT/instructions/templates/AGENTS.md /your/project/AGENTS.md
 ```
 
-## Key differences from Claude Code
+Copy this folder into the target repo or keep it as a shared checkout:
 
-| Feature | Claude Code | ChatGPT/Codex |
-|---------|------------|----------------|
-| Config file | `CLAUDE.md` | Custom instructions / system prompt |
-| MCP support | Native | Via plugins/tools |
-| Context window | 1M tokens | 200K tokens (GPT-5.4) |
-| CLI tool | Claude Code CLI | Codex CLI |
-| Pricing model | Per-token API | Subscription + API |
+```bash
+cp -r ChatGPT /your/project/instructions/ia-instructions/ChatGPT
+```
 
-## Contributing
+Update the `AGENTS.md` router path if needed.
 
-1. Fork the repo
-2. Add instruction files to `ChatGPT/instructions/`
-3. Follow the pattern: one file per scenario, < 200 lines, self-contained
-4. Update this README with actual content descriptions
-5. PR with the scenario your file addresses
+## Consistency Checklist
+
+- [instructions-router.md](instructions-router.md) exists and is the only canonical entrypoint.
+- Every task file used by the router exists.
+- The deleted legacy research prompt has been moved under `instructions/prompts/`.
+- Templates contain placeholders only.
+- No private planning, local state, or project-specific handoff notes are required.

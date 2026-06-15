@@ -68,9 +68,9 @@ query = natural_language_to_sql(
 ## Execute against DuckDB
 
 ```python
-from finops.ingestion.local_store import LocalStore
+from app.ingestion.local_store import LocalStore
 
-store = LocalStore("finops.duckdb")
+store = LocalStore("analytics.duckdb")
 sql = natural_language_to_sql("Which team spent the most last week?", CUR_SCHEMA)
 results = store.query(sql)
 ```
@@ -91,7 +91,7 @@ def is_safe_query(sql: str) -> bool:
 
 ## Relevance to our project
 
-Directly applicable to FinOps Autopilot:
-- `finops/ingestion/local_store.py` already has DuckDB with CUR schema
-- This pattern enables a "natural language cost query" CLI command
-- Schema is already defined, just pass it to Claude
+Directly applicable to analytics applications:
+- `src/ingestion/local_store.py` can expose DuckDB tables with a known schema
+- This pattern enables a natural-language query command
+- Pass only the relevant schema to Claude

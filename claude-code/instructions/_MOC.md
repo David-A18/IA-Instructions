@@ -6,11 +6,11 @@ tags: [moc, instructions, claude-code]
 # Map of content
 
 **Humans (Obsidian):** open **this folder** as a vault (the one containing `_MOC.md`). Use **Graph** + **Backlinks** from this file.  
-**Claude Code:** use [[router]] first. Open this file only when you need the **full link map** in one place.
+**Claude Code:** use the canonical router at `../instructions-router.md` first. `[[router]]` is a compatibility pointer for this vault. Open this file only when you need the **full link map** in one place.
 
 ## Router
 
-- [[router]] — scenario router (default entry)
+- [[router]] - compatibility pointer to `../instructions-router.md`
 
 ## Claude Code optimization
 

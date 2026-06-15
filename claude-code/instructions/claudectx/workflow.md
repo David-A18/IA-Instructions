@@ -67,7 +67,7 @@ claudectx analyze
 
 ```bash
 # Estimate cost before running
-claudectx budget "finops/**/*.py" "tests/**/*.py"
+claudectx budget "src/**/*.py" "tests/**/*.py"
 ```
 
 ## Team workflow (weekly)

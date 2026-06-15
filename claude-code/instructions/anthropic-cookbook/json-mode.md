@@ -80,4 +80,4 @@ response = client.messages.create(
 
 ## Relevance to our project
 
-FinOps Autopilot outputs JSON reports (`finops/reports/json_reporter.py`). These patterns apply when building API endpoints that return structured cost data.
+Analytics apps often output JSON reports (`src/reports/json_reporter.py`). These patterns apply when building API endpoints that return structured data.

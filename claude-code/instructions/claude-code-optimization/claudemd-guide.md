@@ -96,7 +96,7 @@ Wrap must-never-violate rules in tags so Claude doesn't skip them:
 ```markdown
 <critical>
 Never commit .env files or credentials.
-Never use `console.log` — use `finops/utils/logger.py` instead.
+Never use `console.log` — use `src/utils/logger.py` instead.
 </critical>
 ```
 

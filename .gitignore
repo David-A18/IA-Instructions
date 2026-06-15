@@ -1,0 +1,23 @@
+# Local planning and handoff notes
+private/
+PLAN.md
+STATE.md
+analysis.md
+
+# Generated or local review artifacts
+exports/
+reports/
+transcripts/
+*.log
+
+# Obsidian machine-local state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/hotkeys.json
+.obsidian/community-plugins.json
+.obsidian/plugins/
+**/.obsidian/workspace.json
+**/.obsidian/workspace-mobile.json
+**/.obsidian/hotkeys.json
+**/.obsidian/community-plugins.json
+**/.obsidian/plugins/

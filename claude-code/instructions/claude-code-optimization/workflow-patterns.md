@@ -7,7 +7,7 @@
 Let Claude read the codebase and understand the problem.
 
 ```
-Read finops/analysis/ and explain what's implemented vs what's still TODO.
+Read src/analysis/ and explain what's implemented vs what's still TODO.
 ```
 
 ### 2. Plan (`/plan` or Shift+Tab × 2)
@@ -46,7 +46,7 @@ Don't micromanage. Claude's debugging is stronger than most expect.
 ```
 # Paste the error
 TypeError: unsupported operand type(s) for +: 'NoneType' and 'float'
-at finops/analysis/anomaly_detector.py:42
+at src/analysis/anomaly_detector.py:42
 
 fix
 ```
@@ -66,7 +66,7 @@ Don't correct within broken context. The wrong reasoning is still in the window.
 For new features, let Claude ask clarifying questions:
 
 ```
-I want to add Slack alerting to the FinOps CLI. Interview me about requirements.
+I want to add Slack alerting to the analytics CLI. Interview me about requirements.
 ```
 
 Claude will ask about edge cases you didn't consider. Then:

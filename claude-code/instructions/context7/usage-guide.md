@@ -64,7 +64,7 @@ Show me boto3 1.35 S3 client methods. use context7
 
 Context7 automatically matches the appropriate version docs.
 
-## Real examples for our FinOps project
+## Real examples for an analytics project
 
 ### CUR ingestion
 

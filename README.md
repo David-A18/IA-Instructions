@@ -1,231 +1,89 @@
 # IA-Instructions
 
-### Optimize your AI coding assistants — spend less, get better answers
+Reusable Markdown instruction routers for AI coding tools.
 
-A structured collection of instructions, configurations, and optimization guides for AI coding tools. Each AI assistant gets its own folder with curated, self-contained files that the AI reads **only when needed** — no wasted tokens on irrelevant context.
+The goal is simple: give each AI model a small first-read router, then send it to one task-specific instruction file instead of loading a whole knowledge base on every prompt.
 
-**Architecture & refactoring plan:** [`analysis.md`](analysis.md) — full interpretation of the Obsidian × Claude Code decision brief, token/quota mechanics, hooks/skills/MCP policy, and a phased repo refactor.
+## Supported Tools
 
----
+| Folder | Tool family | First-read file | Status |
+| --- | --- | --- | --- |
+| [claude-code/](claude-code/) | Claude Code | [claude-code/instructions-router.md](claude-code/instructions-router.md) | Active |
+| [ChatGPT/](ChatGPT/) | ChatGPT and OpenAI Codex | [ChatGPT/instructions-router.md](ChatGPT/instructions-router.md) | Active starter |
+| [Gemini/](Gemini/) | Gemini CLI and Gemini Code Assist | [Gemini/instructions-router.md](Gemini/instructions-router.md) | Active starter |
 
-## Why This Exists
+## Repository Contract
 
-| Problem | Impact | This repo's solution |
-|---------|--------|---------------------|
-| AI reads your entire codebase on every prompt | 50K–100K tokens wasted per task | Scenario router → reads 1 targeted file |
-| Outdated training data → hallucinated APIs | Wrong code, debug cycles | Context7 MCP → live docs injection |
-| No structure in AI instructions | AI re-reads everything every turn | `CLAUDE.md` < 60 lines, cached every turn |
-| Unused MCP servers sitting idle | 18K tokens/msg overhead per server | Config guides → only install what you use |
-| Long sessions degrade quality | Accuracy drops after 60% context fill | Workflow patterns → `/compact`, `/clear`, scoped sessions |
+Each tool folder follows the same structure:
 
-**Result**: 5K–15K tokens per task instead of 50K–100K+. Up to **84% cost reduction**.
-
----
-
-## Supported AI Tools
-
-| Folder | AI Tool | Status | Files |
-|--------|---------|--------|-------|
-| [`claude-code/`](claude-code/) | Claude Code (Anthropic) | **38 files** in `instructions/` | Router, guides, MCP sample, **Obsidian hub** (`_MOC.md`, `.obsidian/`) |
-| [`ChatGPT/`](ChatGPT/) | ChatGPT / Codex (OpenAI) | **Research prompt** ready | [`PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md`](ChatGPT/PROMPT-DEEP-RESEARCH-OBSIDIAN-CLAUDE-CODE-EFFICIENCY.md) — paste into GPT-5.5+ |
-| [`Gemini/`](Gemini/) | Gemini Code Assist (Google) | Coming soon | Planned: context configs, extensions, API patterns |
-
----
-
-## Project Structure
-
-```
-IA-Instructions/
-│
-├── README.md                          ← You are here
-├── analysis.md                        ← Decision brief interpretation + refactor plan
-├── LICENSE                            ← GPL-3.0
-│
-├── claude-code/                       ← Claude Code optimization (active)
-│   ├── README.md                      ← Overview + quick start for Claude Code
-│   └── instructions/                  ← 38 files: guides + router + Obsidian vault
-│       ├── router.md                  ← Scenario router (start here for Claude Code)
-│       ├── _MOC.md                    ← Map of content + wikilinks (Obsidian graph hub)
-│       ├── OBSIDIAN.md                ← Open folder as vault, graph/backlinks tips
-│       ├── .obsidian/                 ← Minimal Obsidian settings (safe to commit)
-│       ├── .gitignore                 ← Ignores local Obsidian noise (workspace, plugins)
-│       ├── mcp-config-example.json    ← Copy-paste MCP server config
-│       │
-│       ├── context7/                  ← MCP: live library documentation
-│       │   ├── README.md              ← Install + what it does
-│       │   ├── usage-guide.md         ← Prompts, library IDs, version targeting
-│       │   └── config-and-tools.md    ← MCP tools, CLI, API key setup
-│       │
-│       ├── sequential-thinking/       ← MCP: structured step-by-step reasoning
-│       │   ├── README.md              ← Install + when to use vs. not
-│       │   ├── tool-reference.md      ← Parameters, revision, branching
-│       │   └── prompt-patterns.md     ← 10 prompt examples + token economics
-│       │
-│       ├── claude-code-optimization/  ← Token saving, usage metering, workflows
-│       │   ├── README.md              ← Top 3 optimizations + cost model
-│       │   ├── token-saving.md        ← 10 techniques ranked by impact
-│       │   ├── usage-metering.md      ← Web vs Code usage, plan %, “44K” myth
-│       │   ├── commands-shortcuts.md  ← Every slash command + keyboard shortcut
-│       │   ├── claudemd-guide.md      ← How to write CLAUDE.md correctly
-│       │   ├── skills-subagents.md    ← Skills, subagents, hooks config
-│       │   ├── workflow-patterns.md   ← Explore→Plan→Implement→Commit
-│       │   ├── claudeignore-template  ← Ready-to-copy .claudeignore
-│       │   └── CLAUDE-OPTIMIZED.md    ← Template CLAUDE.md
-│       │
-│       ├── claudectx/                 ← CLI: token audit and optimization
-│       │   ├── README.md              ← Install + token breakdown table
-│       │   ├── commands.md            ← All 13 commands with flags
-│       │   ├── mcp-server.md          ← Symbol-level file reads (97% savings)
-│       │   └── workflow.md            ← Daily routine: analyze→optimize→watch
-│       │
-│       ├── anthropic-cookbook/         ← Official Claude API patterns
-│       │   ├── README.md              ← Index + all notebook links
-│       │   ├── prompt-caching.md      ← 90% savings on repeated context
-│       │   ├── json-mode.md           ← 4 techniques for reliable JSON output
-│       │   ├── sql-generation.md      ← Natural language → SQL + safety
-│       │   ├── tool-use.md            ← Function calling + agentic loops
-│       │   └── api-patterns.md        ← Streaming, errors, batch API
-│       │
-│       ├── claude-sdks/               ← Official Anthropic SDKs
-│       │   ├── README.md              ← 4-SDK comparison table
-│       │   ├── api-sdk-python.md      ← Messages, streaming, tools, batch
-│       │   ├── agent-sdk-python.md    ← Agent SDK, custom tools, MCP
-│       │   └── choosing-sdk.md        ← Decision flowchart
-│       │
-│       └── mcp-servers/               ← MCP ecosystem overview
-│           └── README.md              ← Config locations, tier 1/2/3 servers
-│
-├── ChatGPT/                           ← ChatGPT/Codex optimization (planned)
-│   └── README.md                      ← Roadmap + contribution guide
-│
-└── Gemini/                            ← Gemini Code Assist optimization (planned)
-    └── README.md                      ← Roadmap + contribution guide
+```text
+tool-folder/
+  README.md                 # Human usage guide
+  instructions-router.md    # First file the model should read
+  instructions/             # Task-scoped instruction files
+  instructions/templates/   # Copyable native instruction files
 ```
 
----
+Keep the always-loaded native file small:
 
-## Real Performance Data (April 2026)
+- Claude Code: copy from `claude-code/instructions/templates/CLAUDE.md.minimal.md`.
+- Codex: copy from `ChatGPT/instructions/templates/AGENTS.md`.
+- Gemini: copy from `Gemini/instructions/templates/GEMINI.md`.
 
-### Token cost by model
+The native file should point to the router and tell the agent to load only the one file that matches the task.
 
-| Model | SWE-bench Verified | Context | Input $/MTok | Output $/MTok |
-|-------|-------------------|---------|-------------|---------------|
-| **Claude Opus 4.6** | 80.8% | 1M | $5 | $25 |
-| **Claude Sonnet 4.6** | 79.6% | 1M | $3 | $15 |
-| Claude Haiku 4.5 | — | 1M | $1 | $5 |
-| Gemini 3.1 Pro | 80.6% | 2M | $1.25 | $5 |
-| GPT-5.4 | 75.1% (Terminal) | 200K | $2.50 | $10 |
+## Router Pattern
 
-*Sources: [Anthropic Pricing](https://platform.claude.com/docs/en/about-claude/pricing), [SWE-bench Leaderboard](https://www.swebench.com/), [Morph AI Costs 2026](https://www.morphllm.com/ai-coding-costs)*
+1. The model reads its native instruction file.
+2. The native file points to `instructions-router.md`.
+3. The router maps the current situation to one instruction file.
+4. The model reads only that task file.
+5. Detailed reference files stay out of always-loaded context.
 
-### Before vs. after optimization
+## Publication Boundary
 
-| Metric | Before | After | Savings |
-|--------|--------|-------|---------|
-| Tokens per request | ~18K | ~3.7K | **79%** |
-| Daily cost (moderate use) | $20–40 | $5–12 | **60–70%** |
-| Cache hit rate | 12% | 74% | **6x improvement** |
-| 20-turn session cost (100K ctx) | $6.00 | $0.95 | **84%** |
-| Context re-read waste | 98.5% | <20% | **80% reduction** |
+This public repo should contain only reusable instruction mechanics:
 
-*Sources: [Claude Code Cache Analysis](https://dev.to/kitaekatt/mastering-cache-hits-in-claude-code-5648), [claudectx benchmarks](https://github.com/Horilla/claudectx), [Ryan Doser Token Tips](https://ryandoser.com/claude-code-usage-tips/)*
+- Root and model `README.md` files.
+- Model routers.
+- Task-scoped instruction files.
+- Safe templates and examples with placeholders only.
 
-### Optimization techniques ranked by impact
-
-| # | Technique | Savings | Folder |
-|---|-----------|---------|--------|
-| 1 | Prompt caching | **90%** on repeated context | `anthropic-cookbook/prompt-caching.md` |
-| 2 | Batch API | **50%** per request | `anthropic-cookbook/api-patterns.md` |
-| 3 | `/compact` sessions | **40–60%** per long session | `claude-code-optimization/token-saving.md` |
-| 4 | Scoped sessions | **30–50%** per session | `claude-code-optimization/workflow-patterns.md` |
-| 5 | `.claudeignore` | **20–40%** on indexing | `claude-code-optimization/claudeignore-template` |
-| 6 | Disconnect unused MCPs | **18K tokens/msg** per server | `mcp-servers/README.md` |
-| 7 | Structured `CLAUDE.md` | **10–20%** always | `claude-code-optimization/claudemd-guide.md` |
-| 8 | Plan % vs session tokens (confusion) | — | `claude-code-optimization/usage-metering.md` |
-
----
-
-## Obsidian (optional)
-
-Open [`claude-code/instructions/`](claude-code/instructions/) as an **Obsidian vault** for graph view and `[[wikilinks]]`. Start at **`_MOC.md`**; read **`OBSIDIAN.md`** for setup. Claude Code should still use **`router.md` first**; `_MOC.md` is for humans or rare multi-note hops.
-
----
+Do not publish local planning notes, state files, transcripts, generated reports, secrets, private project paths, or project-specific handoff memory. Local planning material belongs under ignored `private/`.
 
 ## Quick Start
 
-### For Claude Code users
+### Claude Code
 
 ```bash
-# 1. Clone
-git clone https://github.com/David-A18/IA-Instructions.git
-
-# 2. Copy instructions to your project
-cp -r IA-Instructions/claude-code/instructions/ /your/project/
-
-# 3. Add to your CLAUDE.md
-echo '## Instructions
-- Router: `instructions/router.md` — pick ONE file per task
-- Optional link map: `instructions/_MOC.md` — not every turn (Obsidian hub)
-- Do NOT read every file in instructions/' >> CLAUDE.md
-
-# 4. Install recommended MCP servers
-# Copy config from claude-code/instructions/mcp-config-example.json
+cp claude-code/instructions/templates/CLAUDE.md.minimal.md /your/project/CLAUDE.md
+cp -r claude-code /your/project/instructions/ia-instructions/claude-code
 ```
 
-See [`claude-code/README.md`](claude-code/README.md) for the full setup guide.
+Then adjust the router path inside `CLAUDE.md` if you place the folder somewhere else.
 
----
+### OpenAI Codex
 
-## How the Scenario Router Works
-
-```
-┌──────────────────────────────────────────────┐
-│  AI gets a task from the user                │
-│                    ↓                         │
-│  Reads CLAUDE.md (< 60 lines, always cached) │
-│                    ↓                         │
-│  Checks router.md (scenario lookup table)    │
-│                    ↓                         │
-│  Opens ONLY 1 file matching the situation    │
-│                    ↓                         │
-│  Executes with targeted context              │
-│  5K–15K tokens instead of 50K–100K+          │
-└──────────────────────────────────────────────┘
+```bash
+cp ChatGPT/instructions/templates/AGENTS.md /your/project/AGENTS.md
+cp -r ChatGPT /your/project/instructions/ia-instructions/ChatGPT
 ```
 
-The router contains three tables: **writing code**, **optimizing the AI**, **configuring MCP servers**. The AI scans the table, matches its situation, reads one file.
+### Gemini
 
----
+```bash
+cp Gemini/instructions/templates/GEMINI.md /your/project/GEMINI.md
+cp -r Gemini /your/project/instructions/ia-instructions/Gemini
+```
 
-## Verified Resources
+## Maintenance Rules
 
-| Resource | URL | Stars |
-|----------|-----|-------|
-| Claude Code | https://github.com/anthropics/claude-code | 113k+ |
-| MCP Servers | https://github.com/modelcontextprotocol/servers | 83k+ |
-| Context7 | https://github.com/upstash/context7 | 52k+ |
-| Claude Code Best Practices | https://github.com/shanraisshan/claude-code-best-practice | 43k+ |
-| Anthropic Cookbook | https://github.com/anthropics/anthropic-cookbook | 40k+ |
-| Anthropic Python SDK | https://github.com/anthropics/anthropic-sdk-python | 3.2k+ |
-| Claude Agent SDK | https://github.com/anthropics/claude-agent-sdk-python | 6.3k+ |
-| claudectx | https://github.com/Horilla/claudectx | New |
-
----
-
-## Contributing
-
-1. Fork the repo
-2. Pick a folder (`claude-code/`, `ChatGPT/`, or `Gemini/`)
-3. Add or improve instruction files (keep each < 200 lines)
-4. If adding to `claude-code/`, update `router.md` and `_MOC.md` with the new file
-5. PR with a description of what situation your file addresses
-
----
-
-## Author
-
-**David A** — AWS / Cloud / IA / DevOps Engineer
+- Add one router row for every new task file.
+- Keep each instruction file focused on one situation.
+- Prefer specific commands, paths, and decision rules over generic advice.
+- Keep private planning and project state out of tracked public files.
+- Validate links and publication boundary before pushing.
 
 ## License
 
-GPL-3.0 — see [LICENSE](LICENSE)
+GPL-3.0. See [LICENSE](LICENSE).

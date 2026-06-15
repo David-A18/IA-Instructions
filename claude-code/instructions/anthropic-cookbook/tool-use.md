@@ -130,7 +130,7 @@ while True:
 
 ## Relevance to our project
 
-FinOps Autopilot can expose its analysis functions as tools:
+An analytics app can expose its analysis functions as tools:
 - `get_cost_by_service` → `local_store.daily_cost_by_service()`
 - `get_cost_by_team` → `local_store.cost_by_team()`
 - `detect_anomalies` → `anomaly_detector.detect()`

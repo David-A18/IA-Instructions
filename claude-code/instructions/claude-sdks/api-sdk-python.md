@@ -19,7 +19,7 @@ client = Anthropic()  # reads ANTHROPIC_API_KEY from env
 response = client.messages.create(
     model="claude-sonnet-4-6",
     max_tokens=1024,
-    system="You are a FinOps expert.",
+    system="You are a cost analysis expert.",
     messages=[{"role": "user", "content": "Analyze this cost report."}],
 )
 print(response.content[0].text)

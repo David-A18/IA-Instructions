@@ -41,9 +41,9 @@ Add to `.claude/settings.json`:
 Read a specific symbol by name, or a line range:
 
 ```
-smart_read(file="finops/ingestion/local_store.py", symbol="LocalStore")
-smart_read(file="finops/ingestion/cur_parser.py", symbol="parse_cur_csv")
-smart_read(file="finops/cli.py", lines="22-51")
+smart_read(file="src/ingestion/local_store.py", symbol="LocalStore")
+smart_read(file="src/ingestion/parser.py", symbol="parse_input")
+smart_read(file="src/cli.py", lines="22-51")
 ```
 
 Returns only the requested symbol's code, not the entire file.
@@ -53,7 +53,7 @@ Returns only the requested symbol's code, not the entire file.
 Find where a symbol is defined without reading any files:
 
 ```
-search_symbols(query="anomaly", scope="finops/")
+search_symbols(query="anomaly", scope="src/")
 ```
 
 Returns: file path, line number, symbol type (class/function/method).
@@ -78,7 +78,7 @@ Run once after significant codebase changes. The index is cached locally.
 
 ## Relevance to our project
 
-FinOps Autopilot has many files with multiple classes/functions. Smart reads for:
+Analytics projects often have files with multiple classes/functions. Smart reads for:
 - Specific DuckDB queries from `local_store.py` (125 lines)
 - Individual analysis functions from `anomaly_detector.py`
 - Single Terraform resources from `main.tf` (80 lines)

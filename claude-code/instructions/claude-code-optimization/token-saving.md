@@ -97,7 +97,7 @@ See `claudeignore-template` in this folder.
 ### 9. Reference files, don't embed content
 
 Bad: pasting a 200-line file into CLAUDE.md
-Good: `"For API patterns, see finops/utils/aws_client.py"`
+Good: `"For API patterns, see src/utils/api_client.py"`
 
 ### 10. Stop after 2 failed correction attempts
 

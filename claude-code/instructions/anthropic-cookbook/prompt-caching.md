@@ -115,7 +115,7 @@ print(f"Output tokens: {usage.output_tokens}")
 
 ## Relevance to our project
 
-For FinOps Autopilot API features:
+For analytics API features:
 - Cache the CUR schema and rules as system prompt
 - Cache tool definitions for cost analysis functions
 - Multi-turn: user asks follow-up questions about the same cost report
